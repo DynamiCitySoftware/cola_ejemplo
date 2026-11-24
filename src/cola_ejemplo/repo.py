@@ -9,7 +9,7 @@ class RepoMemoria:
     def guardar(self, trabajo: Trabajo) -> None:
         self._por_id[trabajo.id] = trabajo
 
-    def obtener_por_id(self, id: int) -> Trabajo | None:
+    def obtener_por_id(self, id_trabajo: int) -> Trabajo | None:
         return self._por_id.get(id)
 
     def listar(self) -> list[Trabajo]:

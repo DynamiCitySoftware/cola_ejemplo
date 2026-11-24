@@ -1,10 +1,13 @@
-from servicio import encolar, iniciar, terminar
-from modelos import Trabajo, Estado
-from repo import RepoMemoria
+from cola_ejemplo.servicio import encolar, iniciar, terminar
+from cola_ejemplo.modelos import Trabajo, Estado
+from cola_ejemplo.repo import RepoMemoria
+from cola_ejemplo.servicio import Servicio
 
 repo = RepoMemoria()
 
-encolar(repo, 1, "limado")
+servicio = Servicio(repo)
+
+servicio.encolar(1, "limado")
 
 listado_trabajos= repo.listar()
 

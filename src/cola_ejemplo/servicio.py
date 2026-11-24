@@ -2,16 +2,34 @@ from modelos import Trabajo, Estado
 from repo import RepoMemoria
 
 
-def encolar(repo: RepoMemoria, id_trabajo: int, nombre: str):
-    trabajo = Trabajo(id_trabajo, nombre, Estado.PENDIENTE)
-    repo.guardar(trabajo)
+class Servicio:
+    def __init__(self):
+        self.repo = RepoMemoria()
+        self.proximo_id = 1
 
 
-def iniciar(repo: RepoMemoria, id_trabajo: int):
-    trabajo = repo.obtener_por_id(id_trabajo)
-    trabajo.estado = Estado.EN_CURSO
+    def encolar(id_trabajo: int, nombre: str):
+        trabajo = Trabajo(self.proximo_id, nombre, Estado.PENDIENTE)
+        self.repo.guardar(trabajo)
+        return trabajo
+        
+
+    def iniciar(id_trabajo: int):
+        try:
+            trabajo = self.repo.obtener_por_id(id_trabajo)
+        except ValueError:
+            print(f"No existe un trabajo con el id: {id_trabajo}")
+
+        trabajo = Trabajo(id_trabajo, trabajo.nombre, Estado.EN_CURSO)
+        self.repo.guardar(trabajo)
 
 
-def terminar(repo: RepoMemoria, id_trabajo: int):
-    trabajo = repo.obtener_por_id(id_trabajo)
-    trabajo.estado = Estado.TERMINADO
+    def terminar(id_trabajo: int):
+        try:
+            trabajo = self.repo.obtener_por_id(id_trabajo)
+        except ValueError:
+            print(f"No existe un trabajo con el id: {id_trabajo}")
+            
+        trabajo = self.repo.obtener_por_id(id_trabajo)
+        trabajo = Trabajo(id_trabajo, trabajo.nombre, Estado.TERMINADO)
+        self.repo.guardar(trabajo)

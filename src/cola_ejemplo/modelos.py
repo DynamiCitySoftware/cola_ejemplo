@@ -8,7 +8,7 @@ class Estado(Enum):
     PENDIENTE = "pendiente"
 
 
-@dataclass
+@dataclass(frozen=True)
 class Trabajo:
     id: int
     nombre: str
