@@ -1,20 +1,20 @@
-from cola_ejemplos.modelos import Trabajo, Estado
-from cola_ejemplos.repo import RepoMemoria
+from cola_ejemplo.modelos import Trabajo, Estado
+from cola_ejemplo.repo import RepoMemoria
 
 
 class Servicio:
-    def __init__(self):
+    def __init__(self, repo: RepoMemoria):
         self.repo = RepoMemoria()
         self.proximo_id = 1
 
 
-    def encolar(id_trabajo: int, nombre: str):
+    def encolar(self, id_trabajo: int, nombre: str):
         trabajo = Trabajo(self.proximo_id, nombre, Estado.PENDIENTE)
         self.repo.guardar(trabajo)
         return trabajo
         
 
-    def iniciar(id_trabajo: int):
+    def iniciar(self, id_trabajo: int):
         try:
             trabajo = self.repo.obtener_por_id(id_trabajo)
         except ValueError:
@@ -24,7 +24,7 @@ class Servicio:
         self.repo.guardar(trabajo)
 
 
-    def terminar(id_trabajo: int):
+    def terminar(self, id_trabajo: int):
         try:
             trabajo = self.repo.obtener_por_id(id_trabajo)
         except ValueError:

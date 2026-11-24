@@ -1,4 +1,4 @@
-from modelos import Trabajo
+from cola_ejemplo.modelos import Trabajo
 
 class RepoMemoria:
     """Su función es guardar Trabajos en memoria, sin saber de reglas."""
