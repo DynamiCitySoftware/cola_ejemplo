@@ -1,5 +1,5 @@
-from modelos import Trabajo, Estado
-from repo import RepoMemoria
+from cola_ejemplos.modelos import Trabajo, Estado
+from cola_ejemplos.repo import RepoMemoria
 
 
 class Servicio:
@@ -29,7 +29,7 @@ class Servicio:
             trabajo = self.repo.obtener_por_id(id_trabajo)
         except ValueError:
             print(f"No existe un trabajo con el id: {id_trabajo}")
-            
+
         trabajo = self.repo.obtener_por_id(id_trabajo)
         trabajo = Trabajo(id_trabajo, trabajo.nombre, Estado.TERMINADO)
         self.repo.guardar(trabajo)
