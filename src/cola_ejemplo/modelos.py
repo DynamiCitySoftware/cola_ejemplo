@@ -1,5 +1,5 @@
-from enum import Enum
 from __future__ import annotations
+from enum import Enum
 from dataclasses import dataclass
 
 class Estado(Enum):
@@ -10,8 +10,7 @@ class Estado(Enum):
 
 @dataclass
 class Trabajo:
-    uid: int
+    id: int
     nombre: str
     estado: Estado
-
         

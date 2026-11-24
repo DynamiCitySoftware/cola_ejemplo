@@ -1,19 +1,17 @@
+from modelos import Trabajo
+
 class RepoMemoria:
-    def __init__(self):
-        self.cola = list()
-    
+    """Su función es guardar Trabajos en memoria, sin saber de reglas."""
 
-    def guardar(self, trabajo):
-        self.cola.append(trabajo)
+    def __init__(self) -> None:
+        self._por_id: dict[int, Trabajo] = {}
 
-    
+    def guardar(self, trabajo: Trabajo) -> None:
+        self._por_id[trabajo.id] = trabajo
 
-    def listar(self):
-        return [trabajo.uid for trabajo in trabajos]
+    def obtener_por_id(self, id: int) -> Trabajo | None:
+        return self._por_id.get(id)
 
-    
-    def obtener_por_uid(self, uid):
-        for trabajo in self.cola:
-            if trabajo.uid == uid:
-                return trabajo
+    def listar(self) -> list[Trabajo]:
+        return list(self._por_id.values())
 
