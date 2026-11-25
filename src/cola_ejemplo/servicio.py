@@ -4,7 +4,7 @@ from cola_ejemplo.repo import RepoMemoria
 
 class Servicio:
     def __init__(self, repo: RepoMemoria):
-        self.repo = RepoMemoria()
+        self.repo = repo
         self.proximo_id = 1
 
 
