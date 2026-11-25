@@ -7,7 +7,7 @@ def test_ciclo():
     servicio = Servicio(repo)
     
     trabajo_torneado = servicio.encolar("torneado")
-    trabajo_torneado = servicio.iniciar(trabajo_torneado)
-    trabajo_torneado = servicio.terminar(trabajo_torneado)
+    trabajo_torneado = servicio.iniciar(trabajo_torneado.id)
+    trabajo_torneado = servicio.terminar(trabajo_torneado.id)
 
     print(repo.listar())
