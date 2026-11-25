@@ -10,7 +10,7 @@ class RepoMemoria:
         self._por_id[trabajo.id] = trabajo
 
     def obtener_por_id(self, id_trabajo: int) -> Trabajo | None:
-        return self._por_id.get(id)
+        return self._por_id.get(id_trabajo)
 
     def listar(self) -> list[Trabajo]:
         return list(self._por_id.values())
