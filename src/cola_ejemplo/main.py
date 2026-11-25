@@ -6,7 +6,7 @@ repo = RepoMemoria()
 
 servicio = Servicio(repo)
 
-servicio.encolar(1, "limado")
+servicio.encolar("torneado")
 
 listado_trabajos= repo.listar()
 
